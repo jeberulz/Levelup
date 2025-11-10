@@ -1,4 +1,4 @@
-import { Trophy, Medal, Award } from 'lucide-react';
+import { Trophy, Medal, Award, Users } from 'lucide-react';
 
 interface LeaderboardEntry {
   rank: number;
@@ -12,9 +12,10 @@ interface LeaderboardWidgetProps {
   entries: LeaderboardEntry[];
   userRank: number;
   userXP: number;
+  onViewCommunity?: () => void;
 }
 
-export default function LeaderboardWidget({ entries, userRank, userXP }: LeaderboardWidgetProps) {
+export default function LeaderboardWidget({ entries, userRank, userXP, onViewCommunity }: LeaderboardWidgetProps) {
   const getRankIcon = (rank: number) => {
     switch(rank) {
       case 1: return <Trophy className="h-4 w-4 text-yellow-500" />;
@@ -75,6 +76,18 @@ export default function LeaderboardWidget({ entries, userRank, userXP }: Leaderb
             </div>
             <span className="text-neutral-900">{userXP.toLocaleString()} XP</span>
           </div>
+        </div>
+      )}
+
+      {onViewCommunity && (
+        <div className="mt-4">
+          <button
+            className="flex items-center gap-2 px-3 py-2 bg-neutral-100 rounded-full text-xs text-neutral-700 hover:bg-neutral-200"
+            onClick={onViewCommunity}
+          >
+            <Users className="h-4 w-4" />
+            View Community
+          </button>
         </div>
       )}
     </div>

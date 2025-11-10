@@ -1,7 +1,7 @@
 
-  # Build Landing Page
+  # LevelUp App
 
-  This is a code bundle for Build Landing Page. The original project is available at https://www.figma.com/design/aXRNmIWgtUiAXUbrqHShCz/Build-Landing-Page.
+  This is a code bundle for LevelUp App. The original project is available at https://www.figma.com/design/aXRNmIWgtUiAXUbrqHShCz/LevelUp-App.
 
   ## Running the code
 

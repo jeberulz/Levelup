@@ -6,6 +6,7 @@ interface DashboardHeaderProps {
   currentStreak: number;
   userAvatar?: string;
   onLogout: () => void;
+  onProfileClick?: () => void;
 }
 
 export default function DashboardHeader({ 
@@ -13,7 +14,8 @@ export default function DashboardHeader({
   userLevel, 
   currentStreak, 
   userAvatar,
-  onLogout 
+  onLogout,
+  onProfileClick
 }: DashboardHeaderProps) {
   return (
     <header className="border-b border-neutral-200 bg-white">
@@ -57,14 +59,23 @@ export default function DashboardHeader({
                 <Settings className="h-5 w-5 text-neutral-600" />
               </button>
               <div className="flex items-center gap-3 pl-3 border-l border-neutral-200">
-                <img 
-                  src={userAvatar || "https://images.unsplash.com/photo-1609126396762-542d99fc7a07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=256"} 
-                  alt={userName}
-                  className="h-9 w-9 rounded-full object-cover ring-2 ring-neutral-200"
-                />
-                <div className="hidden md:block">
+                <button
+                  onClick={onProfileClick}
+                  className="relative group"
+                  aria-label="View profile"
+                >
+                  <img 
+                    src={userAvatar || "https://images.unsplash.com/photo-1609126396762-542d99fc7a07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=256"} 
+                    alt={userName}
+                    className="h-9 w-9 rounded-full object-cover ring-2 ring-neutral-200 group-hover:ring-neutral-400 transition-all cursor-pointer"
+                  />
+                </button>
+                <button
+                  onClick={onProfileClick}
+                  className="hidden md:block hover:text-neutral-600 transition-colors"
+                >
                   <p className="text-neutral-900">{userName}</p>
-                </div>
+                </button>
                 <button
                   onClick={onLogout}
                   className="p-2 hover:bg-neutral-100 rounded-full transition-colors"

@@ -6,7 +6,12 @@ import LearningPathCard from './LearningPathCard';
 import LeaderboardWidget from './LeaderboardWidget';
 import StatsGrid from './StatsGrid';
 import QuestModule from './QuestModule';
-import { Wallet, TrendingUp, CreditCard, BookOpen, Target, Award, Flame } from 'lucide-react';
+import AchievementsModal from './AchievementsModal';
+import ProfileModal from './ProfileModal';
+import BudgetSimulator from './BudgetSimulator';
+import SocialFeed from './SocialFeed';
+import LearningPathModule from './LearningPathModule';
+import { Wallet, TrendingUp, CreditCard, BookOpen, Target, Award, Flame, Calculator, Users } from 'lucide-react';
 
 interface DashboardProps {
   onLogout: () => void;
@@ -15,6 +20,12 @@ interface DashboardProps {
 export default function Dashboard({ onLogout }: DashboardProps) {
   const [questCompleted, setQuestCompleted] = useState(false);
   const [isQuestModuleOpen, setIsQuestModuleOpen] = useState(false);
+  const [isAchievementsOpen, setIsAchievementsOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isBudgetSimulatorOpen, setIsBudgetSimulatorOpen] = useState(false);
+  const [isSocialFeedOpen, setIsSocialFeedOpen] = useState(false);
+  const [isLearningPathOpen, setIsLearningPathOpen] = useState(false);
+  const [selectedLearningPath, setSelectedLearningPath] = useState<any>(null);
   const [userData, setUserData] = useState({
     name: 'Sarah Chen',
     level: 7,
@@ -23,6 +34,9 @@ export default function Dashboard({ onLogout }: DashboardProps) {
     streak: 12,
     avatar: 'https://images.unsplash.com/photo-1609126396762-542d99fc7a07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=256'
   });
+
+  // Calculate total XP earned (mock calculation based on level)
+  const totalXPEarned = (userData.level - 1) * 2000 + userData.currentXP;
 
   const todayQuest = {
     title: 'Track Your Daily Spending',
@@ -125,8 +139,20 @@ export default function Dashboard({ onLogout }: DashboardProps) {
   };
 
   const handleContinuePath = (path: string) => {
-    console.log(`Continuing path: ${path}`);
-    alert(`Opening ${path}... In a real app, this would navigate to the learning module.`);
+    const selectedPath = learningPaths.find(p => p.title === path);
+    if (selectedPath && !selectedPath.locked) {
+      setSelectedLearningPath(selectedPath);
+      setIsLearningPathOpen(true);
+    }
+  };
+
+  const handleUpdateProfile = (data: { name: string; avatar: string; bio: string }) => {
+    setUserData({
+      ...userData,
+      name: data.name,
+      avatar: data.avatar
+    });
+    console.log('Profile updated:', data);
   };
 
   return (
@@ -137,6 +163,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
         currentStreak={userData.streak}
         userAvatar={userData.avatar}
         onLogout={onLogout}
+        onProfileClick={() => setIsProfileOpen(true)}
       />
 
       <main className="max-w-7xl mx-auto px-6 sm:px-8 py-8">
@@ -152,7 +179,10 @@ export default function Dashboard({ onLogout }: DashboardProps) {
 
         {/* Stats Grid */}
         <div className="mb-8">
-          <StatsGrid stats={stats} />
+          <StatsGrid 
+            stats={stats} 
+            onAchievementsClick={() => setIsAchievementsOpen(true)}
+          />
         </div>
 
         {/* Main Content Grid */}
@@ -187,6 +217,38 @@ export default function Dashboard({ onLogout }: DashboardProps) {
                 ))}
               </div>
             </div>
+
+            {/* Interactive Tools */}
+            <div>
+              <h3 className="text-neutral-900 mb-4">Interactive Tools</h3>
+              <button
+                onClick={() => setIsBudgetSimulatorOpen(true)}
+                className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl p-6 transition-all shadow-lg hover:shadow-xl group"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex items-start gap-4 text-left">
+                    <div className="h-12 w-12 rounded-lg bg-white/20 flex items-center justify-center flex-shrink-0">
+                      <Calculator className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-white mb-2">Budget Simulator</h4>
+                      <p className="text-white/90 text-sm mb-3">
+                        Create a personalized budget using the 50/30/20 rule. Visualize your spending and get AI-powered recommendations.
+                      </p>
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className="px-3 py-1 bg-white/20 rounded-full">Interactive</span>
+                        <span className="px-3 py-1 bg-white/20 rounded-full">Earn XP</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 ml-4">
+                    <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                      <Target className="h-4 w-4 text-white" />
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
           </div>
 
           {/* Right Column - Progress & Leaderboard */}
@@ -201,6 +263,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
               entries={leaderboardData}
               userRank={3}
               userXP={2890}
+              onViewCommunity={() => setIsSocialFeedOpen(true)}
             />
           </div>
         </div>
@@ -214,6 +277,46 @@ export default function Dashboard({ onLogout }: DashboardProps) {
         questTitle={todayQuest.title}
         xpReward={todayQuest.xpReward}
       />
+
+      {/* Achievements Modal */}
+      <AchievementsModal
+        isOpen={isAchievementsOpen}
+        onClose={() => setIsAchievementsOpen(false)}
+        userXP={totalXPEarned}
+      />
+
+      {/* Profile Modal */}
+      <ProfileModal
+        isOpen={isProfileOpen}
+        onClose={() => setIsProfileOpen(false)}
+        userData={userData}
+        onUpdateProfile={handleUpdateProfile}
+      />
+
+      {/* Budget Simulator */}
+      <BudgetSimulator
+        isOpen={isBudgetSimulatorOpen}
+        onClose={() => setIsBudgetSimulatorOpen(false)}
+        onComplete={handleCompleteQuest}
+      />
+
+      {/* Social Feed */}
+      <SocialFeed
+        isOpen={isSocialFeedOpen}
+        onClose={() => setIsSocialFeedOpen(false)}
+        currentUser={userData}
+      />
+
+      {/* Learning Path Module */}
+      {selectedLearningPath && (
+        <LearningPathModule
+          isOpen={isLearningPathOpen}
+          onClose={() => setIsLearningPathOpen(false)}
+          pathTitle={selectedLearningPath.title}
+          pathIcon={selectedLearningPath.icon}
+          onComplete={handleCompleteQuest}
+        />
+      )}
     </div>
   );
 }
