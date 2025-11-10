@@ -1,6 +1,7 @@
 'use client';
 
 import { Trophy, Flame, LogOut, Settings } from 'lucide-react';
+import { useCountUp } from '../hooks/useCountUp';
 
 interface DashboardHeaderProps {
   userName: string;
@@ -19,6 +20,9 @@ export default function DashboardHeader({
   onLogout,
   onProfileClick
 }: DashboardHeaderProps) {
+  const animatedStreak = useCountUp(currentStreak);
+  const animatedLevel = useCountUp(userLevel);
+
   return (
     <header className="border-b border-neutral-200 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4">
@@ -40,16 +44,16 @@ export default function DashboardHeader({
             <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full border border-orange-200">
               <Flame className="h-5 w-5 text-orange-500" />
               <div className="flex flex-col">
-                <span className="text-orange-900">{currentStreak} day streak</span>
+                <span className="text-orange-900">{animatedStreak} day streak</span>
               </div>
             </div>
 
             {/* Level Badge */}
             <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-neutral-100 rounded-full">
               <div className="h-6 w-6 rounded-full bg-neutral-900 flex items-center justify-center">
-                <span className="text-white text-xs">{userLevel}</span>
+                <span className="text-white text-xs">{animatedLevel}</span>
               </div>
-              <span className="text-neutral-700">Level {userLevel}</span>
+              <span className="text-neutral-700">Level {animatedLevel}</span>
             </div>
 
             {/* User Menu */}

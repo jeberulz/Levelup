@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { Trophy, Medal, Award, Users } from 'lucide-react';
 
 interface LeaderboardEntry {
@@ -18,6 +19,28 @@ interface LeaderboardWidgetProps {
 }
 
 export default function LeaderboardWidget({ entries, userRank, userXP, onViewCommunity }: LeaderboardWidgetProps) {
+  useEffect(() => {
+    // Stagger animation observer
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const elements = document.querySelectorAll('[data-animate-stagger]');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   const getRankIcon = (rank: number) => {
     switch(rank) {
       case 1: return <Trophy className="h-4 w-4 text-yellow-500" />;
@@ -37,14 +60,19 @@ export default function LeaderboardWidget({ entries, userRank, userXP, onViewCom
       </div>
 
       <div className="space-y-3">
-        {entries.map((entry) => (
+        {entries.map((entry, index) => (
           <div
             key={entry.rank}
-            className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
+            className={`flex items-center gap-3 p-3 rounded-lg opacity-0 translate-y-4 transition-all duration-500 ease-out ${
               entry.isCurrentUser 
                 ? 'bg-neutral-100 ring-2 ring-neutral-900' 
                 : 'hover:bg-neutral-50'
             }`}
+            style={{
+              animationDelay: `${index * 50}ms`,
+              animationFillMode: 'forwards'
+            }}
+            data-animate-stagger
           >
             <div className="w-8 flex items-center justify-center">
               {getRankIcon(entry.rank)}

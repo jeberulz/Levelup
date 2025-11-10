@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DashboardHeader from './DashboardHeader';
 import QuestCard from './QuestCard';
 import ProgressWidget from './ProgressWidget';
@@ -14,6 +14,7 @@ import BudgetSimulator from './BudgetSimulator';
 import SocialFeed from './SocialFeed';
 import LearningPathModule from './LearningPathModule';
 import { Wallet, TrendingUp, CreditCard, BookOpen, Target, Award, Flame, Calculator, Users } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface DashboardProps {
   onLogout: () => void;
@@ -21,6 +22,28 @@ interface DashboardProps {
 
 export default function Dashboard({ onLogout }: DashboardProps) {
   const [questCompleted, setQuestCompleted] = useState(false);
+
+  useEffect(() => {
+    // Stagger animation observer
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const elements = document.querySelectorAll('[data-animate-stagger]');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   const [isQuestModuleOpen, setIsQuestModuleOpen] = useState(false);
   const [isAchievementsOpen, setIsAchievementsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -124,11 +147,16 @@ export default function Dashboard({ onLogout }: DashboardProps) {
     const newXP = userData.currentXP + xpEarned;
     let newLevel = userData.level;
     let remainingXP = newXP;
+    const leveledUp = newXP >= userData.xpToNextLevel;
     
     // Check if leveled up
-    if (newXP >= userData.xpToNextLevel) {
+    if (leveledUp) {
       newLevel = userData.level + 1;
       remainingXP = newXP - userData.xpToNextLevel;
+      toast.success('Level Up!', {
+        description: `Congratulations! You reached Level ${newLevel}`,
+        duration: 4000,
+      });
     }
     
     setUserData({
@@ -137,7 +165,12 @@ export default function Dashboard({ onLogout }: DashboardProps) {
       level: newLevel
     });
     
-    console.log(`Quest completed! +${xpEarned} XP earned!`);
+    if (!leveledUp) {
+      toast.success('XP Earned!', {
+        description: `+${xpEarned} XP added to your progress`,
+        duration: 3000,
+      });
+    }
   };
 
   const handleContinuePath = (path: string) => {
@@ -211,11 +244,20 @@ export default function Dashboard({ onLogout }: DashboardProps) {
               </div>
               <div className="space-y-4">
                 {learningPaths.map((path, index) => (
-                  <LearningPathCard
+                  <div
                     key={index}
-                    {...path}
-                    onContinue={() => handleContinuePath(path.title)}
-                  />
+                    className="opacity-0 translate-y-4 transition-all duration-500 ease-out"
+                    style={{
+                      animationDelay: `${index * 50}ms`,
+                      animationFillMode: 'forwards'
+                    }}
+                    data-animate-stagger
+                  >
+                    <LearningPathCard
+                      {...path}
+                      onContinue={() => handleContinuePath(path.title)}
+                    />
+                  </div>
                 ))}
               </div>
             </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { ChevronRight, Lock } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
 
@@ -24,11 +25,23 @@ export default function LearningPathCard({
   locked = false,
   onContinue
 }: LearningPathCardProps) {
+  const [isMounted, setIsMounted] = useState(false);
+  const [animatedProgress, setAnimatedProgress] = useState(0);
+
+  useEffect(() => {
+    setIsMounted(true);
+    // Animate progress bar on mount
+    const timer = setTimeout(() => {
+      setAnimatedProgress(progress);
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [progress]);
+
   return (
     <button
       onClick={locked ? undefined : onContinue}
       disabled={locked}
-      className={`w-full text-left bg-white rounded-xl border border-neutral-200 p-6 transition-all hover:shadow-md hover:border-neutral-300 ${
+      className={`w-full text-left bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:border-neutral-300 ${
         locked ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'
       }`}
     >
@@ -67,8 +80,8 @@ export default function LearningPathCard({
                 </div>
                 <div className="h-2 bg-neutral-100 rounded-full overflow-hidden">
                   <div 
-                    className="h-full bg-neutral-900 rounded-full transition-all duration-300"
-                    style={{ width: `${progress}%` }}
+                    className="h-full bg-neutral-900 rounded-full transition-all duration-600 ease-out will-change-transform"
+                    style={{ width: `${isMounted ? animatedProgress : 0}%` }}
                   />
                 </div>
               </>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Rocket, Play, Trophy, LineChart } from 'lucide-react';
 import AuthModal from './AuthModal';
+import { useRipple } from '../hooks/useRipple';
 
 const studentImages = [
   "https://images.unsplash.com/photo-1609126396762-542d99fc7a07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=256",
@@ -13,6 +14,7 @@ const studentImages = [
 export default function Hero() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const ripple = useRipple({ color: 'rgba(255, 255, 255, 0.4)' });
 
   useEffect(() => {
     const items = document.querySelectorAll('[data-animate]');
@@ -66,8 +68,11 @@ export default function Hero() {
           {/* CTAs */}
           <div className="flex items-center gap-5 mb-12 transition-all duration-700 ease-out delay-[450ms] opacity-0 translate-y-8 blur-md" data-animate>
             <button 
-              onClick={() => setIsAuthModalOpen(true)}
-              className="group inline-flex items-center hover:bg-neutral-800 transition-colors text-white bg-neutral-900 rounded-full pt-3 pr-3 pb-3 pl-6 shadow-lg"
+              onClick={(e) => {
+                ripple(e);
+                setIsAuthModalOpen(true);
+              }}
+              className="group inline-flex items-center hover:bg-neutral-800 transition-colors text-white bg-neutral-900 rounded-full pt-3 pr-3 pb-3 pl-6 shadow-lg relative overflow-hidden"
             >
               <span>Start Free</span>
               <span className="ml-3 inline-flex items-center justify-center h-8 w-8 rounded-full bg-white/10 ring-1 ring-white/15 group-hover:bg-white/15">

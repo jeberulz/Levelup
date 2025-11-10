@@ -1,6 +1,7 @@
 'use client';
 
 import { CheckCircle2, Circle, Clock, Coins } from 'lucide-react';
+import { useRipple } from '../hooks/useRipple';
 
 interface QuestCardProps {
   title: string;
@@ -21,8 +22,10 @@ export default function QuestCard({
   onStart,
   onComplete
 }: QuestCardProps) {
+  const ripple = useRipple({ color: 'rgba(0, 0, 0, 0.2)' });
+
   return (
-    <div className={`relative overflow-hidden rounded-2xl border-2 transition-all ${
+    <div className={`relative overflow-hidden rounded-2xl border-2 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl ${
       completed 
         ? 'border-green-200 bg-green-50' 
         : 'border-neutral-900 bg-gradient-to-br from-neutral-900 to-neutral-800 shadow-lg'
@@ -74,9 +77,16 @@ export default function QuestCard({
         </div>
 
         <button
-          onClick={completed ? onComplete : onStart}
+          onClick={(e) => {
+            if (!completed) {
+              ripple(e);
+              onStart();
+            } else {
+              onComplete();
+            }
+          }}
           disabled={completed}
-          className={`w-full py-3 px-6 rounded-lg transition-all text-center ${
+          className={`w-full py-3 px-6 rounded-lg transition-all text-center relative overflow-hidden ${
             completed
               ? 'bg-green-600 text-white cursor-not-allowed opacity-75'
               : 'bg-white text-neutral-900 hover:bg-neutral-100 shadow-lg'

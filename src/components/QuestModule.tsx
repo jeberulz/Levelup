@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { X, CheckCircle2, Circle, ArrowRight, ArrowLeft, Trophy, Sparkles } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface QuestStep {
   type: 'content' | 'quiz' | 'action';
@@ -124,6 +125,10 @@ export default function QuestModule({
 
   const handleComplete = () => {
     onComplete(xpReward);
+    toast.success('Quest Completed!', {
+      description: `You earned +${xpReward} XP`,
+      duration: 3000,
+    });
     onClose();
     // Reset state
     setCurrentStep(0);
