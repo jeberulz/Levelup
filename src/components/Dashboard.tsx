@@ -191,7 +191,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="antialiased min-h-screen bg-neutral-50">
       <DashboardHeader
         userName={userData.name}
         userLevel={userData.level}
@@ -204,10 +204,10 @@ export default function Dashboard({ onLogout }: DashboardProps) {
       <main className="max-w-7xl mx-auto px-6 sm:px-8 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-neutral-900 mb-2">
+          <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-2 tracking-tight">
             Welcome back, {userData.name.split(' ')[0]}! 👋
           </h2>
-          <p className="text-neutral-600">
+          <p className="text-neutral-700">
             You're on a {userData.streak}-day streak. Keep it going!
           </p>
         </div>
@@ -226,7 +226,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
           <div className="lg:col-span-2 space-y-6">
             {/* Today's Quest */}
             <div>
-              <h3 className="text-neutral-900 mb-4">Today's Quest</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-4 tracking-tight">Today's Quest</h3>
               <QuestCard
                 {...todayQuest}
                 onStart={handleStartQuest}
@@ -237,7 +237,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
             {/* Learning Paths */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-neutral-900">Learning Paths</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">Learning Paths</h3>
                 <button className="text-neutral-600 hover:text-neutral-900 transition-colors">
                   View All
                 </button>
@@ -264,7 +264,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
 
             {/* Interactive Tools */}
             <div>
-              <h3 className="text-neutral-900 mb-4">Interactive Tools</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-4 tracking-tight">Interactive Tools</h3>
               <button
                 onClick={() => setIsBudgetSimulatorOpen(true)}
                 className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl p-6 transition-all shadow-lg hover:shadow-xl group"
@@ -275,7 +275,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
                       <Calculator className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="text-white mb-2">Budget Simulator</h4>
+                      <h4 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight">Budget Simulator</h4>
                       <p className="text-white/90 text-sm mb-3">
                         Create a personalized budget using the 50/30/20 rule. Visualize your spending and get AI-powered recommendations.
                       </p>

@@ -53,7 +53,7 @@ export default function FeaturesSection() {
         <div className="flex flex-col min-h-full justify-between">
           <div>
             <span className="text-sm font-normal text-zinc-300">Feature Highlights</span>
-            <h2 className="text-[44px] sm:text-6xl lg:text-7xl leading-[0.9] text-zinc-100 mt-2 font-medium tracking-tighter">Everything you need to win with money.</h2>
+            <h2 className="text-[44px] sm:text-6xl lg:text-7xl leading-[0.9] text-zinc-100 mt-2 font-bold tracking-tighter">Everything you need to win with money.</h2>
             <div className="mt-8 relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full h-px bg-gradient-to-r from-black/5 via-black/10 to-black/5"></div>

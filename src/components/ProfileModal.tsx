@@ -194,7 +194,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                   placeholder="Your name"
                 />
               ) : (
-                <h2 className="text-white mb-1">{userData.name}</h2>
+                <h2 className="text-white mb-1 font-bold tracking-tight">{userData.name}</h2>
               )}
               {isEditing ? (
                 <textarea
@@ -315,7 +315,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
             <div className="space-y-6">
               {/* Pinned Achievements */}
               <div>
-                <h3 className="text-neutral-900 mb-4">Showcase Achievements</h3>
+                <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">Showcase Achievements</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {pinnedAchievements.map((achievement, index) => {
                     const Icon = achievement.icon;
@@ -327,7 +327,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                         <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${getRarityColor(achievement.rarity)} mb-3`}>
                           <Icon className="h-7 w-7 text-white" />
                         </div>
-                        <h4 className="text-neutral-900">{achievement.title}</h4>
+                        <h4 className="text-neutral-900 font-bold tracking-tight">{achievement.title}</h4>
                       </div>
                     );
                   })}
@@ -340,7 +340,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
 
               {/* Recent Activity */}
               <div>
-                <h3 className="text-neutral-900 mb-4">Recent Activity</h3>
+                <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">Recent Activity</h3>
                 <div className="space-y-3">
                   {recentActivity.map((activity, index) => {
                     const Icon = activity.icon;
@@ -375,7 +375,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                 <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-5">
                   <div className="flex items-center gap-3 mb-2">
                     <Flame className="h-6 w-6 text-orange-600" />
-                    <h4 className="text-neutral-900">Current Streak</h4>
+                    <h4 className="text-neutral-900 font-bold tracking-tight">Current Streak</h4>
                   </div>
                   <p className="text-neutral-900">{userData.streak} days</p>
                   <p className="text-xs text-neutral-600 mt-1">Keep it going!</p>
@@ -384,7 +384,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                 <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-5">
                   <div className="flex items-center gap-3 mb-2">
                     <Trophy className="h-6 w-6 text-green-600" />
-                    <h4 className="text-neutral-900">Longest Streak</h4>
+                    <h4 className="text-neutral-900 font-bold tracking-tight">Longest Streak</h4>
                   </div>
                   <p className="text-neutral-900">{longestStreak} days</p>
                   <p className="text-xs text-neutral-600 mt-1">Personal best</p>
@@ -393,7 +393,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                 <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-5">
                   <div className="flex items-center gap-3 mb-2">
                     <Calendar className="h-6 w-6 text-blue-600" />
-                    <h4 className="text-neutral-900">Active Days</h4>
+                    <h4 className="text-neutral-900 font-bold tracking-tight">Active Days</h4>
                   </div>
                   <p className="text-neutral-900">{totalActiveDays} days</p>
                   <p className="text-xs text-neutral-600 mt-1">This year</p>
@@ -403,7 +403,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
               {/* Streak Calendar Heatmap */}
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-neutral-900">Activity Calendar - {currentYear}</h3>
+                  <h3 className="text-neutral-900 font-bold tracking-tight">Activity Calendar - {currentYear}</h3>
                   <div className="flex items-center gap-2 text-xs text-neutral-600">
                     <span>Less</span>
                     <div className="flex gap-1">
@@ -455,7 +455,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                       <Flame className="h-4 w-4 text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-neutral-900 mb-1">Streak Freezes</h4>
+                      <h4 className="text-neutral-900 mb-1 font-bold tracking-tight">Streak Freezes</h4>
                       <p className="text-sm text-neutral-600 mb-2">
                         You have <span className="text-neutral-900">{streakFreezes} streak freezes</span> available. Use them to protect your streak if you miss a day!
                       </p>
@@ -471,7 +471,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
           {activeTab === 'stats' && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-neutral-900 mb-4">Personal Statistics</h3>
+                <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">Personal Statistics</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {personalStats.map((stat, index) => {
                     const Icon = stat.icon;
@@ -481,7 +481,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                           <div className="h-10 w-10 rounded-lg bg-neutral-100 flex items-center justify-center">
                             <Icon className="h-5 w-5 text-neutral-900" />
                           </div>
-                          <h4 className="text-neutral-700">{stat.label}</h4>
+                          <h4 className="text-neutral-700 font-bold tracking-tight">{stat.label}</h4>
                         </div>
                         <p className="text-neutral-900">{stat.value}</p>
                       </div>
@@ -492,7 +492,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
 
               {/* Progress Over Time Chart Placeholder */}
               <div>
-                <h3 className="text-neutral-900 mb-4">XP Progress</h3>
+                <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">XP Progress</h3>
                 <div className="bg-gradient-to-br from-neutral-50 to-white border border-neutral-200 rounded-xl p-6 h-64 flex items-center justify-center">
                   <div className="text-center">
                     <TrendingUp className="h-12 w-12 text-neutral-300 mx-auto mb-3" />
@@ -508,7 +508,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
           {activeTab === 'settings' && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-neutral-900 mb-4">Active Goals</h3>
+                <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">Active Goals</h3>
                 
                 <div className="space-y-4">
                   {/* Goal 1 */}
@@ -519,7 +519,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                           <Target className="h-5 w-5 text-purple-600" />
                         </div>
                         <div>
-                          <h4 className="text-neutral-900">Reach Level 10</h4>
+                          <h4 className="text-neutral-900 font-bold tracking-tight">Reach Level 10</h4>
                           <p className="text-sm text-neutral-600">3 levels to go</p>
                         </div>
                       </div>
@@ -538,7 +538,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                           <Flame className="h-5 w-5 text-orange-600" />
                         </div>
                         <div>
-                          <h4 className="text-neutral-900">30-Day Streak</h4>
+                          <h4 className="text-neutral-900 font-bold tracking-tight">30-Day Streak</h4>
                           <p className="text-sm text-neutral-600">18 days remaining</p>
                         </div>
                       </div>
@@ -557,7 +557,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
                           <BookOpen className="h-5 w-5 text-green-600" />
                         </div>
                         <div>
-                          <h4 className="text-neutral-900">Complete Budget Basics</h4>
+                          <h4 className="text-neutral-900 font-bold tracking-tight">Complete Budget Basics</h4>
                           <p className="text-sm text-neutral-600">3 lessons left</p>
                         </div>
                       </div>
@@ -576,7 +576,7 @@ export default function ProfileModal({ isOpen, onClose, userData, onUpdateProfil
 
               {/* Preferences */}
               <div>
-                <h3 className="text-neutral-900 mb-4">Preferences</h3>
+                <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">Preferences</h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between p-4 bg-neutral-50 rounded-lg">
                     <div>

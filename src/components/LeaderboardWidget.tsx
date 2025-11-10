@@ -53,7 +53,7 @@ export default function LeaderboardWidget({ entries, userRank, userXP, onViewCom
   return (
     <div className="bg-white rounded-2xl border border-neutral-200 p-6">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-neutral-900">Leaderboard</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">Leaderboard</h3>
         <span className="px-3 py-1 bg-neutral-100 rounded-full text-xs text-neutral-700">
           This Week
         </span>

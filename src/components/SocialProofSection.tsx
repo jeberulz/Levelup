@@ -35,8 +35,8 @@ export default function SocialProofSection() {
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <p className="text-sm text-neutral-500">Get the app</p>
-                    <h3 className="mt-2 text-3xl sm:text-4xl font-medium tracking-tight text-neutral-900">Your money game starts today</h3>
-                    <p className="text-neutral-600 mt-2">Join free in 60 seconds. No credit card required.</p>
+                    <h3 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900">Your money game starts today</h3>
+                    <p className="text-neutral-700 mt-2 leading-relaxed">Join free in 60 seconds. No credit card required.</p>
                   </div>
                 </div>
                 <form action="#" method="POST" className="space-y-5">
@@ -99,7 +99,7 @@ export default function SocialProofSection() {
             {/* Right: Social proof */}
             <div className="lg:col-span-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl sm:text-3xl font-medium tracking-tight text-neutral-900">Loved by students and young pros</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">Loved by students and young pros</h3>
                 <div className="hidden sm:flex items-center gap-1 text-amber-500" aria-label="Average rating 4.8 out of 5">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 17.3l-6.16 3.7 1.64-6.98L2 8.9l7.04-.6L12 1.8l2.96 6.5 7.04.6-5.48 5.12 1.64 6.98z"></path>

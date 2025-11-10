@@ -169,7 +169,7 @@ export default function QuestModule({
 
           <div className="pr-12">
             <p className="text-white/80 mb-2">Quest in Progress</p>
-            <h2 className="text-white mb-4">{questTitle}</h2>
+            <h2 className="text-white mb-4 font-bold tracking-tight">{questTitle}</h2>
             
             {/* Progress Bar */}
             <div className="flex items-center gap-2">
@@ -190,7 +190,7 @@ export default function QuestModule({
         <div className="flex-1 overflow-y-auto p-8">
           {!showCompletion ? (
             <>
-              <h3 className="text-neutral-900 mb-6">{currentStepData.title}</h3>
+              <h3 className="text-neutral-900 mb-6 font-bold tracking-tight">{currentStepData.title}</h3>
 
               {/* Content Type */}
               {currentStepData.type === 'content' && (
@@ -292,7 +292,7 @@ export default function QuestModule({
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 mb-6 animate-bounce">
                 <Trophy className="h-10 w-10 text-white" />
               </div>
-              <h3 className="text-neutral-900 mb-3">Quest Completed! 🎉</h3>
+              <h3 className="text-neutral-900 mb-3 font-bold tracking-tight">Quest Completed! 🎉</h3>
               <p className="text-neutral-600 mb-8">
                 You've earned valuable financial knowledge and XP!
               </p>

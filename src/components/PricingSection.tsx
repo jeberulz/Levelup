@@ -77,8 +77,8 @@ export default function PricingSection() {
   return (
     <section className="lg:px-8 lg:py-24 sm:px-8 mt-20 mb-20 pt-20 px-6 pb-20" id="pricing">
       <div className="text-center mb-16">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight mb-6">Start free. Level up when you're ready.</h2>
-        <p className="text-neutral-600 text-lg leading-relaxed max-w-2xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">Start free. Level up when you're ready.</h2>
+        <p className="text-neutral-700 text-lg leading-relaxed max-w-2xl mx-auto">
           Try the core experience at no cost. Unlock advanced modules, simulations, and groups on paid plans. Cancel anytime.
         </p>
       </div>
@@ -106,7 +106,7 @@ export default function PricingSection() {
                 <plan.icon className={`w-6 h-6 ${plan.iconColor}`} />
               </div>
               <div>
-                <h3 className={`text-xl font-medium ${plan.popular ? 'text-white' : 'text-neutral-900'}`}>{plan.name}</h3>
+                <h3 className={`text-xl font-bold tracking-tight ${plan.popular ? 'text-white' : 'text-neutral-900'}`}>{plan.name}</h3>
                 <p className={`text-sm ${plan.popular ? 'text-blue-200' : 'text-neutral-500'}`}>{plan.subtitle}</p>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function PricingSection() {
                 <span className={`text-3xl font-medium ${plan.popular ? 'text-white' : 'text-neutral-900'}`}>{plan.price}</span>
                 <span className={`text-sm ${plan.popular ? 'text-blue-200' : 'text-neutral-500'}`}>{plan.period}</span>
               </div>
-              <p className={`text-sm ${plan.popular ? 'text-blue-100' : 'text-neutral-600'}`}>{plan.description}</p>
+              <p className={`text-sm leading-relaxed ${plan.popular ? 'text-blue-100' : 'text-neutral-700'}`}>{plan.description}</p>
             </div>
             
             <ul className="space-y-3 mb-8">
@@ -136,7 +136,7 @@ export default function PricingSection() {
       </div>
 
       <div className="text-center mt-12">
-        <p className="text-neutral-600 mb-6">30-day money-back guarantee on Premium. Cancel anytime.</p>
+        <p className="text-neutral-700 mb-6 leading-relaxed">30-day money-back guarantee on Premium. Cancel anytime.</p>
         <a href="#faq" className="inline-flex items-center gap-2 text-neutral-900 font-medium hover:opacity-80 transition-opacity">
           See FAQs
           <ChevronDown className="h-4 w-4" />

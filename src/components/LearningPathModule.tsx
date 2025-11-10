@@ -456,7 +456,7 @@ export default function LearningPathModule({
           <div className="pr-12">
             <div className="flex items-center gap-3 mb-2">
               <PathIcon className="h-8 w-8 text-blue-400" />
-              <h2 className="text-white">{pathTitle}</h2>
+              <h2 className="text-white font-bold tracking-tight">{pathTitle}</h2>
             </div>
             {currentView === 'overview' ? (
               <div>
@@ -503,7 +503,7 @@ export default function LearningPathModule({
               {/* Overall Progress */}
               <div className="bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6 mb-6">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-neutral-900">Your Progress</h3>
+                  <h3 className="text-neutral-900 font-bold tracking-tight">Your Progress</h3>
                   <span className="text-neutral-700">{Math.round(progressPercentage)}%</span>
                 </div>
                 <div className="h-3 bg-white rounded-full overflow-hidden mb-3">
@@ -522,7 +522,7 @@ export default function LearningPathModule({
 
               {/* Lesson List */}
               <div>
-                <h3 className="text-neutral-900 mb-4">Curriculum</h3>
+                <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">Curriculum</h3>
                 <div className="space-y-3">
                   {lessons.map((lesson, index) => {
                     const TypeIcon = getLessonTypeIcon(lesson.type);
@@ -620,7 +620,7 @@ export default function LearningPathModule({
 
                       {currentLesson.content.sections?.map((section, idx) => (
                         <div key={idx} className="space-y-3">
-                          <h4 className="text-neutral-900">{section.title}</h4>
+                          <h4 className="text-neutral-900 font-bold tracking-tight">{section.title}</h4>
                           <p className="text-neutral-700">{section.content}</p>
                           {section.tips && section.tips.length > 0 && (
                             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
@@ -642,7 +642,7 @@ export default function LearningPathModule({
 
                       {currentLesson.content.keyTakeaways && (
                         <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                          <h4 className="text-neutral-900 mb-3">Key Takeaways</h4>
+                          <h4 className="text-neutral-900 mb-3 font-bold tracking-tight">Key Takeaways</h4>
                           <ul className="space-y-2">
                             {currentLesson.content.keyTakeaways.map((takeaway, idx) => (
                               <li key={idx} className="flex items-start gap-2 text-neutral-700">
@@ -670,7 +670,7 @@ export default function LearningPathModule({
 
                       {currentLesson.content.sections?.map((section, idx) => (
                         <div key={idx} className="space-y-3">
-                          <h4 className="text-neutral-900">{section.title}</h4>
+                          <h4 className="text-neutral-900 font-bold tracking-tight">{section.title}</h4>
                           <p className="text-neutral-700 leading-relaxed">{section.content}</p>
                           {section.tips && section.tips.length > 0 && (
                             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
@@ -692,7 +692,7 @@ export default function LearningPathModule({
 
                       {currentLesson.content.keyTakeaways && (
                         <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                          <h4 className="text-neutral-900 mb-3">Key Takeaways</h4>
+                          <h4 className="text-neutral-900 mb-3 font-bold tracking-tight">Key Takeaways</h4>
                           <ul className="space-y-2">
                             {currentLesson.content.keyTakeaways.map((takeaway, idx) => (
                               <li key={idx} className="flex items-start gap-2 text-neutral-700">
@@ -720,7 +720,7 @@ export default function LearningPathModule({
 
                       {currentLesson.content.sections?.map((section, idx) => (
                         <div key={idx} className="space-y-3">
-                          <h4 className="text-neutral-900">{section.title}</h4>
+                          <h4 className="text-neutral-900 font-bold tracking-tight">{section.title}</h4>
                           <p className="text-neutral-700">{section.content}</p>
                         </div>
                       ))}
@@ -729,7 +729,7 @@ export default function LearningPathModule({
                         <div className="bg-white border-2 border-purple-200 rounded-xl p-6">
                           <div className="flex items-center gap-2 mb-4">
                             <ListChecks className="h-6 w-6 text-purple-600" />
-                            <h4 className="text-neutral-900">Action Items</h4>
+                            <h4 className="text-neutral-900 font-bold tracking-tight">Action Items</h4>
                           </div>
                           <div className="space-y-3">
                             {currentLesson.content.actionItems.map((item, idx) => (
@@ -765,7 +765,7 @@ export default function LearningPathModule({
 
                       {currentLesson.content.keyTakeaways && (
                         <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-                          <h4 className="text-neutral-900 mb-3">Key Takeaways</h4>
+                          <h4 className="text-neutral-900 mb-3 font-bold tracking-tight">Key Takeaways</h4>
                           <ul className="space-y-2">
                             {currentLesson.content.keyTakeaways.map((takeaway, idx) => (
                               <li key={idx} className="flex items-start gap-2 text-neutral-700">
@@ -785,7 +785,7 @@ export default function LearningPathModule({
                       <div className="bg-white border-2 border-neutral-200 rounded-xl p-8">
                         <div className="mb-6">
                           <div className="flex items-center justify-between mb-4">
-                            <h4 className="text-neutral-900">
+                            <h4 className="text-neutral-900 font-bold tracking-tight">
                               Question {currentQuizIndex + 1} of {currentLesson.content.quiz.length}
                             </h4>
                             <span className="text-sm text-neutral-600">
@@ -914,7 +914,7 @@ export default function LearningPathModule({
                   <div className="h-20 w-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
                     <Trophy className="h-10 w-10 text-green-600" />
                   </div>
-                  <h3 className="text-neutral-900 mb-3">Lesson Complete! 🎉</h3>
+                  <h3 className="text-neutral-900 mb-3 font-bold tracking-tight">Lesson Complete! 🎉</h3>
                   <p className="text-neutral-600 mb-6">
                     Great job completing "{currentLesson.title}"
                   </p>

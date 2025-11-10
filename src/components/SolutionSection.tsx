@@ -33,8 +33,8 @@ export default function SolutionSection() {
           {/* Header */}
           <div className="text-center transition-all duration-700 ease-out opacity-0 translate-y-8 blur-md" data-animate>
             <span className="inline-flex items-center ring-1 ring-neutral-200 text-sm font-medium text-neutral-600 bg-white rounded-full pt-1 px-3 pb-1">Solution Overview</span>
-            <h2 className="sm:text-5xl lg:text-6xl text-4xl font-normal text-neutral-900 tracking-tighter mt-4">Finance learning that feels like a game</h2>
-            <p className="text-neutral-600 max-w-2xl mx-auto mt-3">Daily quests, streaks, and levels make budgeting, investing, and credit skills stick—for life.</p>
+            <h2 className="sm:text-5xl lg:text-6xl text-4xl font-bold text-neutral-900 tracking-tighter mt-4">Finance learning that feels like a game</h2>
+            <p className="text-neutral-700 max-w-2xl mx-auto mt-3">Daily quests, streaks, and levels make budgeting, investing, and credit skills stick—for life.</p>
           </div>
 
           {/* Grid */}
@@ -49,8 +49,8 @@ export default function SolutionSection() {
                 </div>
                 <div className="p-5 sm:p-6">
                   <div className="sm:p-5 bg-neutral-100/50 ring-black/5 ring-1 rounded-2xl pt-4 px-4 pb-4">
-                    <h3 className="text-neutral-900 font-semibold tracking-tight">What you get</h3>
-                    <p className="text-neutral-700 text-sm mt-2">Bite-sized modules, simulations, and goal trackers that turn money skills into a habit you can't put down.</p>
+                    <h3 className="text-neutral-900 font-bold tracking-tight">What you get</h3>
+                    <p className="text-neutral-700 text-sm mt-2 leading-relaxed">Bite-sized modules, simulations, and goal trackers that turn money skills into a habit you can't put down.</p>
                     <ul className="mt-4 space-y-3">
                       {benefits.map((benefit, i) => (
                         <li key={i} className="flex items-start gap-3 text-neutral-900 text-sm">
@@ -80,10 +80,10 @@ export default function SolutionSection() {
             <div className="lg:col-span-6 space-y-4">
               {steps.map((step, i) => (
                 <div key={i}>
-                  <div className={`hover:bg-neutral-50 transition flex text-left bg-white w-full ring-black/5 ring-1 rounded-2xl pt-4 px-5 pb-4 shadow-lg items-center justify-between transition-all duration-700 ease-out delay-[${450 + i * 50}ms] opacity-0 translate-y-8 blur-md`} data-animate>
+                  <div className={`hover:bg-neutral-50 flex text-left bg-white w-full ring-black/5 ring-1 rounded-2xl pt-4 px-5 pb-4 shadow-lg items-center justify-between transition-all duration-700 ease-out delay-[${450 + i * 50}ms] opacity-0 translate-y-8 blur-md`} data-animate>
                     <div className="min-w-0">
                       <p className="text-neutral-900 font-medium tracking-tight">{step.title}</p>
-                      <p className="text-neutral-600 text-sm mt-1">{step.description}</p>
+                      <p className="text-neutral-700 text-sm mt-1 leading-relaxed">{step.description}</p>
                     </div>
                     <step.icon className="text-neutral-400 h-6 w-6 flex-shrink-0" />
                   </div>

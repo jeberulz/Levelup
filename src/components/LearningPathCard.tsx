@@ -59,8 +59,8 @@ export default function LearningPathCard({
         <div className="flex-1">
           <div className="flex items-start justify-between mb-2">
             <div>
-              <h4 className="text-neutral-900 mb-1">{title}</h4>
-              <p className="text-neutral-600">{description}</p>
+              <h4 className="text-lg sm:text-xl font-bold text-neutral-900 mb-1 tracking-tight">{title}</h4>
+              <p className="text-neutral-700">{description}</p>
             </div>
             {!locked && (
               <ChevronRight className="h-5 w-5 text-neutral-400 flex-shrink-0 mt-1" />

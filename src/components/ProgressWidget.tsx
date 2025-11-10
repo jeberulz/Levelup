@@ -34,8 +34,8 @@ export default function ProgressWidget({
     <div className="bg-white rounded-2xl border border-neutral-200 p-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-neutral-900 mb-1">Level {animatedLevel}</h3>
-          <p className="text-neutral-600">
+          <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-1 tracking-tight">Level {animatedLevel}</h3>
+          <p className="text-neutral-700">
             {animatedXP} / {xpToNextLevel} XP
           </p>
         </div>

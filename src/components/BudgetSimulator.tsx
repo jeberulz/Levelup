@@ -198,7 +198,7 @@ export default function BudgetSimulator({ isOpen, onClose, onComplete }: BudgetS
           <div className="pr-12">
             <div className="flex items-center gap-3 mb-2">
               <DollarSign className="h-8 w-8 text-green-400" />
-              <h2 className="text-white">Budget Simulator</h2>
+              <h2 className="text-white font-bold tracking-tight">Budget Simulator</h2>
             </div>
             <p className="text-white/80">
               Plan your monthly budget using the 50/30/20 rule
@@ -297,7 +297,7 @@ export default function BudgetSimulator({ isOpen, onClose, onComplete }: BudgetS
 
                   {/* Category Sliders */}
                   <div className="space-y-4">
-                    <h3 className="text-neutral-900">Budget Categories</h3>
+                    <h3 className="text-neutral-900 font-bold tracking-tight">Budget Categories</h3>
                     
                     {categories.map(category => {
                       const Icon = category.icon;
@@ -364,7 +364,7 @@ export default function BudgetSimulator({ isOpen, onClose, onComplete }: BudgetS
                     <div className="flex items-start gap-3">
                       <budgetHealth.icon className={`h-6 w-6 text-${budgetHealth.color}-600 flex-shrink-0 mt-1`} />
                       <div>
-                        <h4 className="text-neutral-900 mb-1">Budget Health</h4>
+                        <h4 className="text-neutral-900 mb-1 font-bold tracking-tight">Budget Health</h4>
                         <p className="text-neutral-700">{budgetHealth.message}</p>
                       </div>
                     </div>
@@ -372,7 +372,7 @@ export default function BudgetSimulator({ isOpen, onClose, onComplete }: BudgetS
 
                   {/* Pie Chart */}
                   <div className="bg-white border border-neutral-200 rounded-xl p-6">
-                    <h4 className="text-neutral-900 mb-4">Spending Breakdown</h4>
+                    <h4 className="text-neutral-900 mb-4 font-bold tracking-tight">Spending Breakdown</h4>
                     <ResponsiveContainer width="100%" height={300}>
                       <PieChart>
                         <Pie
@@ -398,7 +398,7 @@ export default function BudgetSimulator({ isOpen, onClose, onComplete }: BudgetS
                   {showTips && (
                     <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
                       <div className="flex items-start justify-between mb-3">
-                        <h4 className="text-neutral-900">50/30/20 Rule</h4>
+                        <h4 className="text-neutral-900 font-bold tracking-tight">50/30/20 Rule</h4>
                         <button
                           onClick={() => setShowTips(false)}
                           className="text-neutral-500 hover:text-neutral-700"
@@ -446,7 +446,7 @@ export default function BudgetSimulator({ isOpen, onClose, onComplete }: BudgetS
               <div className="space-y-6">
                 {/* Current vs Recommended */}
                 <div>
-                  <h3 className="text-neutral-900 mb-4">Your Budget vs 50/30/20 Rule</h3>
+                  <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">Your Budget vs 50/30/20 Rule</h3>
                   <div className="bg-white border border-neutral-200 rounded-xl p-6">
                     <ResponsiveContainer width="100%" height={300}>
                       <BarChart data={comparisonData}>
@@ -470,7 +470,7 @@ export default function BudgetSimulator({ isOpen, onClose, onComplete }: BudgetS
                     
                     return (
                       <div key={index} className="bg-white border border-neutral-200 rounded-xl p-6">
-                        <h4 className="text-neutral-900 mb-4">{item.category}</h4>
+                        <h4 className="text-neutral-900 mb-4 font-bold tracking-tight">{item.category}</h4>
                         
                         <div className="space-y-3">
                           <div>
@@ -531,7 +531,7 @@ export default function BudgetSimulator({ isOpen, onClose, onComplete }: BudgetS
                       <PiggyBank className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-neutral-900 mb-2">Savings Analysis</h4>
+                      <h4 className="text-neutral-900 mb-2 font-bold tracking-tight">Savings Analysis</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                           <p className="text-xs text-neutral-600 mb-1">Monthly Savings</p>
@@ -567,7 +567,7 @@ export default function BudgetSimulator({ isOpen, onClose, onComplete }: BudgetS
 
                 {/* Recommendations */}
                 <div>
-                  <h3 className="text-neutral-900 mb-4">Personalized Recommendations</h3>
+                  <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">Personalized Recommendations</h3>
                   <div className="space-y-3">
                     {needsPercentage > 55 && (
                       <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 flex items-start gap-3">

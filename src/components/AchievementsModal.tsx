@@ -353,7 +353,7 @@ export default function AchievementsModal({ isOpen, onClose, userXP }: Achieveme
           <div className="pr-12">
             <div className="flex items-center gap-3 mb-2">
               <Trophy className="h-8 w-8 text-yellow-400" />
-              <h2 className="text-white">Achievements</h2>
+              <h2 className="text-white font-bold tracking-tight">Achievements</h2>
             </div>
             <p className="text-white/80 mb-4">
               Track your progress and unlock rewards
@@ -411,7 +411,7 @@ export default function AchievementsModal({ isOpen, onClose, userXP }: Achieveme
           {/* Recent Unlocks */}
           {selectedCategory === 'all' && recentUnlocks.length > 0 && (
             <div className="mb-8">
-              <h3 className="text-neutral-900 mb-4">Recently Unlocked</h3>
+              <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">Recently Unlocked</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {recentUnlocks.map((achievement) => {
                   const Icon = achievement.icon;
@@ -425,7 +425,7 @@ export default function AchievementsModal({ isOpen, onClose, userXP }: Achieveme
                         <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${getRarityColor(achievement.rarity)} mb-3`}>
                           <Icon className="h-6 w-6 text-white" />
                         </div>
-                        <h4 className="text-neutral-900 mb-1">{achievement.title}</h4>
+                        <h4 className="text-neutral-900 mb-1 font-bold tracking-tight">{achievement.title}</h4>
                         <p className="text-xs text-neutral-600 mb-2">{achievement.description}</p>
                         <div className="flex items-center gap-2 text-xs text-neutral-500">
                           <Sparkles className="h-3 w-3" />
@@ -441,7 +441,7 @@ export default function AchievementsModal({ isOpen, onClose, userXP }: Achieveme
 
           {/* All Achievements Grid */}
           <div>
-            <h3 className="text-neutral-900 mb-4">
+            <h3 className="text-neutral-900 mb-4 font-bold tracking-tight">
               {selectedCategory === 'all' ? 'All Achievements' : `${categories.find(c => c.id === selectedCategory)?.label} Achievements`}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -487,7 +487,7 @@ export default function AchievementsModal({ isOpen, onClose, userXP }: Achieveme
                       </div>
 
                       {/* Content */}
-                      <h4 className={`mb-2 ${achievement.isUnlocked ? 'text-neutral-900' : 'text-neutral-600'}`}>
+                      <h4 className={`mb-2 font-bold tracking-tight ${achievement.isUnlocked ? 'text-neutral-900' : 'text-neutral-600'}`}>
                         {achievement.title}
                       </h4>
                       <p className={`text-xs mb-3 ${achievement.isUnlocked ? 'text-neutral-600' : 'text-neutral-500'}`}>

@@ -15,8 +15,8 @@ export default function FinalCTA({ onOpenDemo }: FinalCTAProps) {
           <div className="absolute -bottom-16 -right-10 h-64 w-64 bg-amber-400/30 blur-[120px] rounded-full"></div>
         </div>
         <div className="relative px-6 py-14 sm:px-10 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-5xl font-medium tracking-tight">Your money game starts today</h2>
-          <p className="mt-3 text-white/80 max-w-2xl mx-auto">Join free in 60 seconds. No credit card required. Cancel anytime.</p>
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">Your money game starts today</h2>
+          <p className="mt-3 text-white/80 max-w-2xl mx-auto leading-relaxed">Join free in 60 seconds. No credit card required. Cancel anytime.</p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a href="#download" className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white text-neutral-900 font-medium hover:bg-white/90 transition">
               Start Free

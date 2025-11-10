@@ -33,7 +33,7 @@ export default function DashboardHeader({
               <Trophy className="h-5 w-5 text-white" />
             </div>
             <div>
-              <h1 className="text-neutral-900">LevelUp Money</h1>
+              <h1 className="text-neutral-900 font-bold tracking-tight">LevelUp Money</h1>
               <p className="text-xs text-neutral-500">Financial Mastery</p>
             </div>
           </div>

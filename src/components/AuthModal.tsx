@@ -69,7 +69,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
         <div className="p-8">
           {/* Header */}
           <div className="text-center mb-8">
-            <h2 className="text-neutral-900 mb-2">
+            <h2 className="text-neutral-900 mb-2 font-bold tracking-tight">
               {activeTab === 'signup' ? 'Create Your Account' : 'Welcome Back'}
             </h2>
             <p className="text-neutral-600">

@@ -40,8 +40,8 @@ export default function FAQSection() {
   return (
     <section className="lg:px-8 sm:px-8 pt-10 pb-20" id="faq">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-neutral-900 text-center">Questions, answered</h2>
-        <p className="text-neutral-600 text-base sm:text-lg mt-3 text-center">Everything you need to know about trials, privacy, and plans.</p>
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 text-center">Questions, answered</h2>
+        <p className="text-neutral-700 text-base sm:text-lg mt-3 text-center leading-relaxed">Everything you need to know about trials, privacy, and plans.</p>
 
         <div className="mt-8 space-y-3">
           {faqs.map((faq, i) => (

@@ -29,8 +29,8 @@ export default function ProblemSection() {
   return (
     <section className="sm:p-8 sm:py-8 relative bg-white max-w-7xl border-black/5 border rounded-3xl mt-32 mx-auto mb-20 pt-12 px-6 pb-12" id="problem">
       <div className="max-w-3xl mx-auto text-center transition-all duration-700 ease-out opacity-0 translate-y-8 blur-md" data-animate>
-        <h2 className="sm:text-5xl lg:text-6xl leading-[1.05] text-4xl font-medium text-neutral-900 tracking-tighter">Traditional finance education doesn't stick</h2>
-        <p className="sm:text-lg text-base text-neutral-600 mt-4">89% of students want better financial education—but most tools feel like homework. We make learning fast, fun, and habit-forming.</p>
+        <h2 className="sm:text-5xl lg:text-6xl leading-[1.05] text-4xl font-bold text-neutral-900 tracking-tighter">Traditional finance education doesn't stick</h2>
+        <p className="sm:text-lg text-base text-neutral-700 mt-4">89% of students want better financial education—but most tools feel like homework. We make learning fast, fun, and habit-forming.</p>
 
         <div className="mt-6 flex items-center justify-center gap-3 flex-wrap">
           <span className="inline-flex items-center gap-2 text-sm font-medium text-neutral-700 bg-neutral-100 ring-1 ring-black/10 h-11 rounded-full px-4">
@@ -52,8 +52,8 @@ export default function ProblemSection() {
               <img className="w-full h-48 object-cover" src={point.image} alt={point.title} />
             </div>
             <div className="pt-5 px-5 pb-5">
-              <h3 className="text-lg font-semibold tracking-tight text-neutral-900">{point.title}</h3>
-              <p className="text-sm text-neutral-600 mt-2">{point.description}</p>
+              <h3 className="text-lg font-bold tracking-tight text-neutral-900">{point.title}</h3>
+              <p className="text-sm text-neutral-700 mt-2">{point.description}</p>
             </div>
           </article>
         ))}

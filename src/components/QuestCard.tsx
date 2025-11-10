@@ -52,10 +52,10 @@ export default function QuestCard({
                 {completed ? 'Completed' : 'Today\'s Quest'}
               </span>
             </div>
-            <h3 className={`mb-2 ${completed ? 'text-neutral-900' : 'text-white'}`}>
+            <h3 className={`text-xl sm:text-2xl font-bold mb-2 tracking-tight ${completed ? 'text-neutral-900' : 'text-white'}`}>
               {title}
             </h3>
-            <p className={completed ? 'text-neutral-600' : 'text-white/80'}>
+            <p className={completed ? 'text-neutral-700' : 'text-white/80'}>
               {description}
             </p>
           </div>

@@ -57,11 +57,11 @@ export default function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="sm:text-5xl lg:text-[64px] leading-[1.05] text-4xl font-medium tracking-tighter mb-6 transition-all duration-700 ease-out delay-150 opacity-0 translate-y-8 blur-md" data-animate>
+          <h1 className="sm:text-5xl lg:text-[64px] leading-[1.05] text-4xl font-bold tracking-tighter mb-6 transition-all duration-700 ease-out delay-150 opacity-0 translate-y-8 blur-md" data-animate>
             Turn money skills into a daily streak
           </h1>
 
-          <p className="sm:text-lg leading-relaxed text-base text-neutral-600 mb-8 transition-all duration-700 ease-out delay-300 opacity-0 translate-y-8 blur-md" data-animate>
+          <p className="sm:text-lg leading-relaxed text-base text-neutral-700 mb-8 transition-all duration-700 ease-out delay-300 opacity-0 translate-y-8 blur-md" data-animate>
             Bite-sized lessons, levels, and leaderboards. Master budgeting, investing, and credit—without the boring.
           </p>
 
