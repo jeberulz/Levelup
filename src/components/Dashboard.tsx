@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import DashboardHeader from './DashboardHeader';
 import QuestCard from './QuestCard';
 import ProgressWidget from './ProgressWidget';
@@ -21,6 +22,7 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ onLogout }: DashboardProps) {
+  const router = useRouter();
   const [questCompleted, setQuestCompleted] = useState(false);
 
   useEffect(() => {
@@ -238,7 +240,10 @@ export default function Dashboard({ onLogout }: DashboardProps) {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">Learning Paths</h3>
-                <button className="text-neutral-600 hover:text-neutral-900 transition-colors">
+                <button 
+                  onClick={() => router.push('/learning-paths')}
+                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
                   View All
                 </button>
               </div>

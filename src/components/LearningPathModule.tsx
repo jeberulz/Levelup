@@ -786,29 +786,29 @@ export default function LearningPathModule({
                         <div className="mb-6">
                           <div className="flex items-center justify-between mb-4">
                             <h4 className="text-neutral-900 font-bold tracking-tight">
-                              Question {currentQuizIndex + 1} of {currentLesson.content.quiz.length}
+                              Question {currentQuizIndex + 1} of {currentLesson.content!.quiz!.length}
                             </h4>
                             <span className="text-sm text-neutral-600">
-                              {currentQuizIndex + 1}/{currentLesson.content.quiz.length}
+                              {currentQuizIndex + 1}/{currentLesson.content!.quiz!.length}
                             </span>
                           </div>
                           <div className="h-2 bg-neutral-100 rounded-full overflow-hidden">
                             <div 
                               className="h-full bg-gradient-to-r from-green-600 to-blue-600 transition-all duration-300"
-                              style={{ width: `${((currentQuizIndex + 1) / currentLesson.content.quiz.length) * 100}%` }}
+                              style={{ width: `${((currentQuizIndex + 1) / currentLesson.content!.quiz!.length) * 100}%` }}
                             />
                           </div>
                         </div>
 
                         <div className="mb-6">
                           <p className="text-neutral-900 text-lg mb-6">
-                            {currentLesson.content.quiz[currentQuizIndex].question}
+                            {currentLesson.content!.quiz![currentQuizIndex].question}
                           </p>
 
                           <div className="space-y-3">
-                            {currentLesson.content.quiz[currentQuizIndex].options.map((option, idx) => {
+                            {currentLesson.content!.quiz![currentQuizIndex].options.map((option, idx) => {
                               const isSelected = selectedAnswer === idx;
-                              const isCorrect = idx === currentLesson.content.quiz![currentQuizIndex].correctAnswer;
+                              const isCorrect = idx === currentLesson.content!.quiz![currentQuizIndex].correctAnswer;
                               const showResult = showQuizResult;
 
                               return (
@@ -853,17 +853,17 @@ export default function LearningPathModule({
 
                         {showQuizResult && (
                           <div className={`p-4 rounded-lg ${
-                            selectedAnswer === currentLesson.content.quiz[currentQuizIndex].correctAnswer
+                            selectedAnswer === currentLesson.content!.quiz![currentQuizIndex].correctAnswer
                               ? 'bg-green-50 border border-green-200'
                               : 'bg-blue-50 border border-blue-200'
                           }`}>
                             <p className="text-neutral-800 mb-2">
-                              {selectedAnswer === currentLesson.content.quiz[currentQuizIndex].correctAnswer
+                              {selectedAnswer === currentLesson.content!.quiz![currentQuizIndex].correctAnswer
                                 ? '✓ Correct!'
                                 : '✗ Not quite right'}
                             </p>
                             <p className="text-sm text-neutral-700">
-                              {currentLesson.content.quiz[currentQuizIndex].explanation}
+                              {currentLesson.content!.quiz![currentQuizIndex].explanation}
                             </p>
                           </div>
                         )}
