@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Diamond, Menu, X, ArrowRight } from 'lucide-react';
+import { Trophy, Menu, X, ArrowRight } from 'lucide-react';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,11 +34,14 @@ export default function Header() {
       <div className="lg:px-8 max-w-7xl mx-auto px-6">
         <div className="flex pt-8 pb-8 items-center justify-between">
           {/* Brand */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 ring-1 ring-black/5 text-white bg-neutral-900 rounded-full shadow-sm items-center justify-center">
-              <Diamond className="w-4 h-4" />
+          <Link href="/" className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-full bg-neutral-900 flex items-center justify-center">
+              <Trophy className="h-5 w-5 text-white" />
             </div>
-            <span className="text-[17px] uppercase font-semibold tracking-tighter">LevelUP</span>
+            <div>
+              <h1 className="text-neutral-900 font-bold tracking-tight">LevelUp Money</h1>
+              <p className="text-xs text-neutral-500">Financial Mastery</p>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
