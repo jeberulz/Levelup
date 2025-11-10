@@ -1,3 +1,5 @@
+'use client';
+
 import { Trophy, Flame, LogOut, Settings } from 'lucide-react';
 
 interface DashboardHeaderProps {

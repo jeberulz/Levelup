@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { X, CheckCircle2, Circle, ArrowRight, ArrowLeft, Trophy, Sparkles } from 'lucide-react';
 

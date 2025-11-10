@@ -1,3 +1,5 @@
+'use client';
+
 import { ChevronRight, Lock } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
 

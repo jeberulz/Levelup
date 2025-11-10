@@ -1,3 +1,5 @@
+'use client';
+
 import { Trophy, Medal, Award, Users } from 'lucide-react';
 
 interface LeaderboardEntry {

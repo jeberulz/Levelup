@@ -1,3 +1,5 @@
+'use client';
+
 import { Rocket, Play } from 'lucide-react';
 
 interface FinalCTAProps {

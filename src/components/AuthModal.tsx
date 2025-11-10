@@ -1,4 +1,7 @@
+'use client';
+
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { X, Mail, Lock, User, Chrome, Apple } from 'lucide-react';
 
 interface AuthModalProps {
@@ -7,6 +10,7 @@ interface AuthModalProps {
 }
 
 export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<'signup' | 'signin'>('signup');
   const [formData, setFormData] = useState({
     name: '',
@@ -25,8 +29,9 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
     // Set authentication state in localStorage (mock)
     localStorage.setItem('isAuthenticated', 'true');
     
-    // Reload to show dashboard
-    window.location.reload();
+    // Navigate to dashboard
+    router.push('/dashboard');
+    onClose();
   };
 
   const handleSocialLogin = (provider: string) => {
@@ -36,8 +41,9 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
     // Set authentication state in localStorage (mock)
     localStorage.setItem('isAuthenticated', 'true');
     
-    // Reload to show dashboard
-    window.location.reload();
+    // Navigate to dashboard
+    router.push('/dashboard');
+    onClose();
   };
 
   return (

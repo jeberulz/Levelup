@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckCircle2, Circle, Clock, Coins } from 'lucide-react';
 
 interface QuestCardProps {
