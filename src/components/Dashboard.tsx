@@ -229,11 +229,20 @@ export default function Dashboard({ onLogout }: DashboardProps) {
             {/* Today's Quest */}
             <div>
               <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-4 tracking-tight">Today's Quest</h3>
-              <QuestCard
-                {...todayQuest}
-                onStart={handleStartQuest}
-                onComplete={() => {}}
-              />
+              <div
+                className="opacity-0 translate-y-4 transition-all duration-500 ease-out"
+                style={{
+                  animationDelay: '0ms',
+                  animationFillMode: 'forwards'
+                }}
+                data-animate-stagger
+              >
+                <QuestCard
+                  {...todayQuest}
+                  onStart={handleStartQuest}
+                  onComplete={() => {}}
+                />
+              </div>
             </div>
 
             {/* Learning Paths */}
