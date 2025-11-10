@@ -383,8 +383,8 @@ export default function AchievementsModal({ isOpen, onClose, userXP }: Achieveme
         </div>
 
         {/* Category Tabs */}
-        <div className="border-b border-neutral-200 bg-white px-6 overflow-x-auto">
-          <div className="flex gap-2 py-4">
+        <div className="border-b border-neutral-200 bg-white px-6">
+          <div className="flex gap-2 py-4 flex-wrap">
             {categories.map(category => {
               const Icon = category.icon;
               const isActive = selectedCategory === category.id;
