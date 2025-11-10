@@ -47,7 +47,7 @@ export default function Header() {
             <a href="#how" className="hover:text-neutral-900 transition-colors">How It Works</a>
             <a href="#pricing" className="hover:text-neutral-900 transition-colors">Pricing</a>
             <a href="#faq" className="hover:text-neutral-900 transition-colors">FAQ</a>
-            <a href="#download" className="inline-flex items-center gap-2 hover:bg-neutral-800 transition-colors bg-neutral-900 text-white rounded-full pt-2 pr-4 pb-2 pl-4 shadow-lg">
+            <a href="/dashboard" className="inline-flex items-center gap-2 hover:bg-neutral-800 transition-colors bg-neutral-900 text-white rounded-full pt-2 pr-4 pb-2 pl-4 shadow-lg">
               Start Free
               <ArrowRight className="h-4 w-4" />
             </a>
@@ -76,7 +76,7 @@ export default function Header() {
               <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="block hover:text-neutral-900 transition-colors text-base text-neutral-600 pt-2 pb-2">Pricing</a>
               <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="block hover:text-neutral-900 transition-colors text-base text-neutral-600 pt-2 pb-2">FAQ</a>
               <div className="pt-4 border-t border-neutral-200">
-                <a href="#download" onClick={() => setMobileMenuOpen(false)} className="inline-flex items-center gap-2 hover:bg-neutral-800 transition-colors justify-center text-white bg-neutral-900 w-full rounded-full pt-3 pr-4 pb-3 pl-4 shadow-lg">
+                <a href="/dashboard" onClick={() => setMobileMenuOpen(false)} className="inline-flex items-center gap-2 hover:bg-neutral-800 transition-colors justify-center text-white bg-neutral-900 w-full rounded-full pt-3 pr-4 pb-3 pl-4 shadow-lg">
                   Start Free
                   <ArrowRight className="h-4 w-4" />
                 </a>

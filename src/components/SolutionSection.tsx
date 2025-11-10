@@ -62,7 +62,7 @@ export default function SolutionSection() {
                   </div>
                 </div>
                 <div className="px-5 pb-5">
-                  <a href="#download" className="inline-flex items-center justify-center hover:bg-neutral-800 transition text-sm font-medium text-white bg-neutral-900 w-full h-12 rounded-2xl shadow-lg">
+                  <a href="/dashboard" className="inline-flex items-center justify-center hover:bg-neutral-800 transition text-sm font-medium text-white bg-neutral-900 w-full h-12 rounded-2xl shadow-lg">
                     Start Free
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>

@@ -63,7 +63,7 @@ export default function FeaturesSection() {
               <div>
                 <p className="text-sm text-zinc-100 font-medium tracking-tight">Built for streaks and habits</p>
                 <p className="mt-1 text-sm text-zinc-300">Game mechanics keep you motivated: XP, levels, leaderboards, and rewards.</p>
-                <a href="#download" className="mt-4 inline-flex items-center gap-2 h-10 px-4 rounded-full bg-zinc-100 text-zinc-900 text-sm font-normal hover:bg-zinc-200 transition">
+                <a href="/dashboard" className="mt-4 inline-flex items-center gap-2 h-10 px-4 rounded-full bg-zinc-100 text-zinc-900 text-sm font-normal hover:bg-zinc-200 transition">
                   Start Free
                   <span className="inline-flex h-2 w-2 rounded-full bg-zinc-900"></span>
                 </a>

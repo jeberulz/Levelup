@@ -18,7 +18,7 @@ export default function FinalCTA({ onOpenDemo }: FinalCTAProps) {
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">Your money game starts today</h2>
           <p className="mt-3 text-white/80 max-w-2xl mx-auto leading-relaxed">Join free in 60 seconds. No credit card required. Cancel anytime.</p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="#download" className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white text-neutral-900 font-medium hover:bg-white/90 transition">
+            <a href="/dashboard" className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white text-neutral-900 font-medium hover:bg-white/90 transition">
               Start Free
               <Rocket className="h-4 w-4" />
             </a>

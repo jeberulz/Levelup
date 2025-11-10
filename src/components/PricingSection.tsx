@@ -128,7 +128,7 @@ export default function PricingSection() {
               ))}
             </ul>
             
-            <a href="#download" className={`inline-flex items-center justify-center transition-colors font-medium w-full rounded-full pt-3 px-6 pb-3 shadow-lg ${plan.buttonStyle}`}>
+            <a href="/dashboard" className={`inline-flex items-center justify-center transition-colors font-medium w-full rounded-full pt-3 px-6 pb-3 shadow-lg ${plan.buttonStyle}`}>
               {plan.cta}
             </a>
           </div>
