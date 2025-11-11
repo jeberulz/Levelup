@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import DashboardHeader from './DashboardHeader';
+import DashboardSidebar from './DashboardSidebar';
 import QuestCard from './QuestCard';
 import ProgressWidget from './ProgressWidget';
 import LearningPathCard from './LearningPathCard';
@@ -14,7 +14,7 @@ import ProfileModal from './ProfileModal';
 import BudgetSimulator from './BudgetSimulator';
 import SocialFeed from './SocialFeed';
 import LearningPathModule from './LearningPathModule';
-import { Wallet, TrendingUp, CreditCard, BookOpen, Target, Award, Flame, Calculator, Users } from 'lucide-react';
+import { Wallet, TrendingUp, CreditCard, BookOpen, Target, Award, Flame, Calculator, Users, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface DashboardProps {
@@ -46,6 +46,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
 
     return () => observer.disconnect();
   }, []);
+  
   const [isQuestModuleOpen, setIsQuestModuleOpen] = useState(false);
   const [isAchievementsOpen, setIsAchievementsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -193,136 +194,145 @@ export default function Dashboard({ onLogout }: DashboardProps) {
   };
 
   return (
-    <div className="antialiased min-h-screen bg-neutral-50">
-      <DashboardHeader
+    <div className="min-h-screen bg-neutral-50 flex">
+      {/* Sidebar */}
+      <DashboardSidebar
         userName={userData.name}
         userLevel={userData.level}
         currentStreak={userData.streak}
         userAvatar={userData.avatar}
+        currentXP={userData.currentXP}
+        xpToNextLevel={userData.xpToNextLevel}
         onLogout={onLogout}
         onProfileClick={() => setIsProfileOpen(true)}
+        onAchievementsClick={() => setIsAchievementsOpen(true)}
       />
 
-      <main className="max-w-7xl mx-auto px-6 sm:px-8 py-8">
-        {/* Welcome Section */}
-        <div className="mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-2 tracking-tight">
-            Welcome back, {userData.name.split(' ')[0]}! 👋
-          </h2>
-          <p className="text-neutral-700">
-            You're on a {userData.streak}-day streak. Keep it going!
-          </p>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="mb-8">
-          <StatsGrid 
-            stats={stats} 
-            onAchievementsClick={() => setIsAchievementsOpen(true)}
-          />
-        </div>
-
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-          {/* Left Column - Quest & Progress */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Today's Quest */}
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-4 tracking-tight">Today's Quest</h3>
-              <div
-                className="opacity-0 translate-y-4 transition-all duration-500 ease-out"
-                style={{
-                  animationDelay: '0ms',
-                  animationFillMode: 'forwards'
-                }}
-                data-animate-stagger
-              >
-                <QuestCard
-                  {...todayQuest}
-                  onStart={handleStartQuest}
-                  onComplete={() => {}}
-                />
-              </div>
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-8">
+          {/* Welcome Section */}
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-2">
+              <h1 className="text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
+                Welcome back, {userData.name.split(' ')[0]}!
+              </h1>
+              <Sparkles className="h-6 w-6 text-yellow-500" />
             </div>
+            <p className="text-neutral-600 text-lg">
+              You're on a {userData.streak}-day streak. Keep the momentum going! 🔥
+            </p>
+          </div>
 
-            {/* Learning Paths */}
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">Learning Paths</h3>
-                <button 
-                  onClick={() => router.push('/learning-paths')}
-                  className="text-neutral-600 hover:text-neutral-900 transition-colors"
+          {/* Stats Grid */}
+          <div className="mb-8">
+            <StatsGrid 
+              stats={stats} 
+              onAchievementsClick={() => setIsAchievementsOpen(true)}
+            />
+          </div>
+
+          {/* Main Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Left Column - Quest & Learning Paths */}
+            <div className="lg:col-span-2 space-y-8">
+              {/* Today's Quest */}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-neutral-900 tracking-tight">Today's Quest</h2>
+                  <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">
+                    Daily Challenge
+                  </span>
+                </div>
+                <div
+                  className="opacity-0 translate-y-4 transition-all duration-500 ease-out"
+                  style={{
+                    animationDelay: '0ms',
+                    animationFillMode: 'forwards'
+                  }}
+                  data-animate-stagger
                 >
-                  View All
-                </button>
+                  <QuestCard
+                    {...todayQuest}
+                    onStart={handleStartQuest}
+                    onComplete={() => {}}
+                  />
+                </div>
               </div>
-              <div className="space-y-4">
-                {learningPaths.map((path, index) => (
-                  <div
-                    key={index}
-                    className="opacity-0 translate-y-4 transition-all duration-500 ease-out"
-                    style={{
-                      animationDelay: `${index * 50}ms`,
-                      animationFillMode: 'forwards'
-                    }}
-                    data-animate-stagger
-                  >
-                    <LearningPathCard
-                      {...path}
-                      onContinue={() => handleContinuePath(path.title)}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Interactive Tools */}
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mb-4 tracking-tight">Interactive Tools</h3>
-              <button
-                onClick={() => setIsBudgetSimulatorOpen(true)}
-                className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl p-6 transition-all shadow-lg hover:shadow-xl group"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start gap-4 text-left">
-                    <div className="h-12 w-12 rounded-lg bg-white/20 flex items-center justify-center flex-shrink-0">
-                      <Calculator className="h-6 w-6 text-white" />
+              {/* Learning Paths */}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-neutral-900 tracking-tight">Learning Paths</h2>
+                  <button 
+                    onClick={() => router.push('/learning-paths')}
+                    className="text-neutral-600 hover:text-neutral-900 transition-colors text-sm font-medium"
+                  >
+                    View All →
+                  </button>
+                </div>
+                <div className="space-y-4">
+                  {learningPaths.map((path, index) => (
+                    <div
+                      key={index}
+                      className="opacity-0 translate-y-4 transition-all duration-500 ease-out"
+                      style={{
+                        animationDelay: `${index * 50}ms`,
+                        animationFillMode: 'forwards'
+                      }}
+                      data-animate-stagger
+                    >
+                      <LearningPathCard
+                        {...path}
+                        onContinue={() => handleContinuePath(path.title)}
+                      />
                     </div>
-                    <div>
-                      <h4 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight">Budget Simulator</h4>
-                      <p className="text-white/90 text-sm mb-3">
-                        Create a personalized budget using the 50/30/20 rule. Visualize your spending and get AI-powered recommendations.
-                      </p>
-                      <div className="flex items-center gap-2 text-sm">
-                        <span className="px-3 py-1 bg-white/20 rounded-full">Interactive</span>
-                        <span className="px-3 py-1 bg-white/20 rounded-full">Earn XP</span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Interactive Tools */}
+              <div>
+                <h2 className="text-2xl font-bold text-neutral-900 mb-4 tracking-tight">Interactive Tools</h2>
+                <button
+                  onClick={() => setIsBudgetSimulatorOpen(true)}
+                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-2xl p-6 transition-all shadow-lg hover:shadow-xl group"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-start gap-4 text-left">
+                      <div className="h-12 w-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                        <Calculator className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-2 tracking-tight">Budget Simulator</h3>
+                        <p className="text-white/90 text-sm mb-3">
+                          Create a personalized budget using the 50/30/20 rule. Visualize your spending and get AI-powered recommendations.
+                        </p>
+                        <div className="flex items-center gap-2 text-sm">
+                          <span className="px-3 py-1 bg-white/20 rounded-full">Interactive</span>
+                          <span className="px-3 py-1 bg-white/20 rounded-full">Earn XP</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex-shrink-0 ml-4">
+                      <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                        <Target className="h-4 w-4 text-white" />
                       </div>
                     </div>
                   </div>
-                  <div className="flex-shrink-0 ml-4">
-                    <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                      <Target className="h-4 w-4 text-white" />
-                    </div>
-                  </div>
-                </div>
-              </button>
+                </button>
+              </div>
             </div>
-          </div>
 
-          {/* Right Column - Progress & Leaderboard */}
-          <div className="space-y-6">
-            <ProgressWidget
-              currentXP={userData.currentXP}
-              xpToNextLevel={userData.xpToNextLevel}
-              currentLevel={userData.level}
-            />
-
-            <LeaderboardWidget
-              entries={leaderboardData}
-              userRank={3}
-              userXP={2890}
-              onViewCommunity={() => setIsSocialFeedOpen(true)}
-            />
+            {/* Right Column - Leaderboard */}
+            <div className="space-y-6">
+              <LeaderboardWidget
+                entries={leaderboardData}
+                userRank={3}
+                userXP={2890}
+                onViewCommunity={() => setIsSocialFeedOpen(true)}
+              />
+            </div>
           </div>
         </div>
       </main>
